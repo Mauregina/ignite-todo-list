@@ -29,9 +29,30 @@
     color: var(--gray-100);
 }
 
+.noData {
+    border-top: 0.0625rem solid var(--gray-400);
+    border-radius: 0.5rem;
+    padding: 4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.noData img {
+    height: 3.5rem;
+}
+
+.msg {
+    display: flex;
+    flex-direction: column;
+    height: 2.75rem;
+}
+
 .listItem {
     display: grid;
-    grid-template-columns: 24px 1fr 24px;
+    grid-template-columns: 16px 1fr 16px;
     gap: 0.75rem;
     padding: 1rem;
     background: var(--gray-400);
@@ -42,3 +63,36 @@
 .listItem + .listItem{
     margin-top: 0.75rem;
 }
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0.125rem solid var(--blue);
+    border-radius: 50%;
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+
+    display: flex;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="checkbox"]:after {
+    font-family: "Font Awesome 6 Free";
+    content: "\f00c";
+    font-weight: 900;
+    font-size: 0.5rem;
+    display: none;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--purple-dark);
+    border: none;
+}
+
+input[type="checkbox"]:checked::after {
+    display: block;
+}
+
