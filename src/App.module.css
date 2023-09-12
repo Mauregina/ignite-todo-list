@@ -1,0 +1,9 @@
+.wrapper {
+    max-width: 46rem;
+    margin: -1.75rem auto 0rem;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5.125rem;
+}

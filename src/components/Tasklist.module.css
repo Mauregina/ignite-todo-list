@@ -1,0 +1,44 @@
+.tasklist {
+    display: flex;
+    flex-direction: column;
+}
+
+.summary {
+    height: 1.1875rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.taskCreated {
+    color: var(--blue);
+}
+
+.taskDone {
+    color: var(--purple);
+}
+
+.summary span {
+    background: var(--gray-400);
+    border-radius: 999px;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    color: var(--gray-100);
+}
+
+.listItem {
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--gray-400);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.listItem + .listItem{
+    margin-top: 0.75rem;
+}
