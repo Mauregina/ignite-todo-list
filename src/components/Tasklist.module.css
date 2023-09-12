@@ -96,3 +96,7 @@ input[type="checkbox"]:checked::after {
     display: block;
 }
 
+.delete {
+    cursor: pointer;
+}
+
