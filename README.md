@@ -20,3 +20,8 @@ Conceitos praticados:
 - Propriedades
 - Componentização
 - Padronização de código com Eslint
+
+<p float="left">
+ <img src="https://github.com/Mauregina/ignite-todo-list/blob/master/public/prototipo1.png" width="800" />
+ <img src="https://github.com/Mauregina/ignite-todo-list/blob/master/public/prototipo2.png" width="800" />
+</p>
