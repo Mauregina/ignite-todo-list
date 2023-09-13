@@ -40,7 +40,7 @@ export function TaskList({ tasks, onDeleteTask, onChangeDone }: TaskProps) {
         ))
       ) : (
         <div className={styles.noData}>
-          <img src={clipboard} alt="Sem tarefas"></img>
+          <img src={clipboard} alt=""></img>
           <div className={styles.msg}>
             <strong>Você ainda não tem tarefas cadastradas</strong>
             <span>Crie tarefas e organize seus itens a fazer</span>
