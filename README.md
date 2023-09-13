@@ -19,3 +19,4 @@ Conceitos praticados:
 - Listas e chaves no ReactJS
 - Propriedades
 - Componentização
+- Padronização de código com Eslint
