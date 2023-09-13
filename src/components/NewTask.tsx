@@ -1,22 +1,23 @@
 import {PlusCircle} from 'phosphor-react';
+import { ChangeEvent, FormEvent, InvalidEvent } from 'react';
 
 import styles from './NewTask.module.css';
 
 interface NewTaskProps {
     onAddNewTask: () => void;
-    onChangeDescription: (event: any) => void;
+    onChangeDescription: (event: ChangeEvent<HTMLInputElement>) => void;
     newDescripton: string;
 }
 
 export function NewTask( { onAddNewTask, onChangeDescription, newDescripton } : NewTaskProps) {
     const isNewDescriptionEmpty = newDescripton.length === 0;
         
-    function handleAddNewTask(event: any) {
+    function handleAddNewTask(event: FormEvent) {
         event?.preventDefault();
         onAddNewTask();
     }
 
-    function handleNewDescriptionInvalid(event: any) {
+    function handleNewDescriptionInvalid(event: InvalidEvent<HTMLInputElement>) {
         event.target.setCustomValidity('Este campo é obrigatório');
     }
 

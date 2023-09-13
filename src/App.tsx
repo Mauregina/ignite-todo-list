@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { Header } from './components/Header';
 import { NewTask } from './components/NewTask';
@@ -15,7 +15,7 @@ export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newDescripton, setNewDescripton] = useState('');
 
-  function handleAddNewTask() {
+  function addNewTask() {
     const newId = Math.max(...tasks.map(i => i.id), 0) + 1;
 
     const newTask = {
@@ -28,24 +28,25 @@ export function App() {
     setNewDescripton('');
   }
 
-  function handleDeleteTask(id: number) {
+  function deleteTask(id: number) {
     const tasksWithoutDeletedOne = tasks.filter(
       task => task.id !== id
     );
     setTasks(tasksWithoutDeletedOne);
   }
 
-  function handleChangeDescription(event: any) {
-      setNewDescripton(event.target.value);
-      event.target.setCustomValidity('');
-  }
-
-  function handleChangeDone(id: number) {
+  function changeDone(id: number) {
     const newTaskList = tasks.map(i => i.id  === id ?
       {...i, done: !i.done}
       : i
     )
     setTasks(newTaskList);
+  }
+
+
+  function handleChangeDescription(event: ChangeEvent<HTMLInputElement>) {
+    setNewDescripton(event.target.value);
+    event.target.setCustomValidity('');
   }
   
   return (
@@ -53,14 +54,14 @@ export function App() {
       <Header />
       <div className={styles.wrapper}>
         <NewTask
-          onAddNewTask={handleAddNewTask}
+          onAddNewTask={addNewTask}
           onChangeDescription={handleChangeDescription}
           newDescripton={newDescripton}
         />
         <TaskList
           tasks={tasks}
-          onDeleteTask={handleDeleteTask}
-          onChangeDone={handleChangeDone}
+          onDeleteTask={deleteTask}
+          onChangeDone={changeDone}
         />
       </div>
     </div>
