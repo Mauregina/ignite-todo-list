@@ -50,20 +50,6 @@
     height: 2.75rem;
 }
 
-.listItem {
-    display: grid;
-    grid-template-columns: 16px 1fr 16px;
-    gap: 0.75rem;
-    padding: 1rem;
-    background: var(--gray-400);
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-}
-
-.listItem + .listItem{
-    margin-top: 0.75rem;
-}
-
 input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
@@ -95,8 +81,3 @@ input[type="checkbox"]:checked {
 input[type="checkbox"]:checked::after {
     display: block;
 }
-
-.delete {
-    cursor: pointer;
-}
-

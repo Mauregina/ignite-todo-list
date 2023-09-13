@@ -1,27 +1,41 @@
-import styles from './NewTask.module.css';
 import {PlusCircle} from 'phosphor-react';
 
+import styles from './NewTask.module.css';
+
 interface NewTaskProps {
-    onAddNewTask: (description: string) => void;
+    onAddNewTask: () => void;
     onChangeDescription: (event: any) => void;
     newDescripton: string;
 }
 
 export function NewTask( { onAddNewTask, onChangeDescription, newDescripton } : NewTaskProps) {
+    const isNewDescriptionEmpty = newDescripton.length === 0;
+        
+    function handleAddNewTask(event: any) {
+        event?.preventDefault();
+        onAddNewTask();
+    }
+
+    function handleNewDescriptionInvalid(event: any) {
+        event.target.setCustomValidity('Este campo é obrigatório');
+    }
+
     return (
-        <div className={styles.container}>
+        <form onSubmit={handleAddNewTask} className={styles.container}>
             <input
                 type='text'
                 placeholder='Adicione uma nova tarefa'
                 value={newDescripton}
                 onChange={onChangeDescription}
+                onInvalid={handleNewDescriptionInvalid}
+                required
             />
             <button
-                onClick={() => onAddNewTask(newDescripton)}
-                disabled={newDescripton === ''}
+                type='submit'
+                disabled={isNewDescriptionEmpty}
             >
                 Criar <PlusCircle />
             </button>
-        </div>
+        </form>
     )
 }

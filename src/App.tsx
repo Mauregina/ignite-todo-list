@@ -1,23 +1,26 @@
 
+import { useState } from 'react';
+
 import { Header } from './components/Header';
 import { NewTask } from './components/NewTask';
-import { Tasklist } from './components/Tasklist';
+import { TaskList } from './components/TaskList';
 import { Task } from './interfaces/Task';
+
 import styles from './App.module.css';
 
 import './global.css';
-import { useState } from 'react';
 
 export function App() {
 
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [newDescripton, setNewDescripton] = useState('');
 
-  function handleAddNewTask(description: string) {
+  function handleAddNewTask() {
     const newId = Math.max(...tasks.map(i => i.id), 0) + 1;
 
     const newTask = {
       id: newId,
-      description: description,
+      description: newDescripton,
       done: false
     }
 
@@ -25,16 +28,16 @@ export function App() {
     setNewDescripton('');
   }
 
-  const [newDescripton, setNewDescripton] = useState('');
+  function handleDeleteTask(id: number) {
+    const tasksWithoutDeletedOne = tasks.filter(
+      task => task.id !== id
+    );
+    setTasks(tasksWithoutDeletedOne);
+  }
 
   function handleChangeDescription(event: any) {
       setNewDescripton(event.target.value);
-  }
-
-  function handleDeleteTask(id: number) {
-    setTasks(tasks.filter(
-      task => task.id !== id
-    ));
+      event.target.setCustomValidity('');
   }
 
   function handleChangeDone(id: number) {
@@ -54,7 +57,7 @@ export function App() {
           onChangeDescription={handleChangeDescription}
           newDescripton={newDescripton}
         />
-        <Tasklist
+        <TaskList
           tasks={tasks}
           onDeleteTask={handleDeleteTask}
           onChangeDone={handleChangeDone}

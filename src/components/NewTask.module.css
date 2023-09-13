@@ -29,7 +29,6 @@
 }
 
 .container button:disabled{
-    background: var(--gray-400);
-    color: var(--gray-300);
-    cursor: auto;
+    opacity: 0.7;
+    cursor: not-allowed;
 }
