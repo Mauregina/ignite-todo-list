@@ -1,54 +1,48 @@
+import { ChangeEvent, useState } from 'react'
 
-import { ChangeEvent, useState } from 'react';
+import { Header } from './components/Header'
+import { NewTask } from './components/NewTask'
+import { TaskList } from './components/TaskList'
+import { Task } from './interfaces/Task'
 
-import { Header } from './components/Header';
-import { NewTask } from './components/NewTask';
-import { TaskList } from './components/TaskList';
-import { Task } from './interfaces/Task';
+import styles from './App.module.css'
 
-import styles from './App.module.css';
-
-import './global.css';
+import './global.css'
 
 export function App() {
-
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [newDescripton, setNewDescripton] = useState('');
+  const [tasks, setTasks] = useState<Task[]>([])
+  const [newDescripton, setNewDescripton] = useState('')
 
   function addNewTask() {
-    const newId = Math.max(...tasks.map(i => i.id), 0) + 1;
+    const newId = Math.max(...tasks.map((i) => i.id), 0) + 1
 
     const newTask = {
       id: newId,
       description: newDescripton,
-      done: false
+      done: false,
     }
 
-    setTasks([...tasks, newTask]);
-    setNewDescripton('');
+    setTasks([...tasks, newTask])
+    setNewDescripton('')
   }
 
   function deleteTask(id: number) {
-    const tasksWithoutDeletedOne = tasks.filter(
-      task => task.id !== id
-    );
-    setTasks(tasksWithoutDeletedOne);
+    const tasksWithoutDeletedOne = tasks.filter((task) => task.id !== id)
+    setTasks(tasksWithoutDeletedOne)
   }
 
   function changeDone(id: number) {
-    const newTaskList = tasks.map(i => i.id  === id ?
-      {...i, done: !i.done}
-      : i
+    const newTaskList = tasks.map((i) =>
+      i.id === id ? { ...i, done: !i.done } : i,
     )
-    setTasks(newTaskList);
+    setTasks(newTaskList)
   }
-
 
   function handleChangeDescription(event: ChangeEvent<HTMLInputElement>) {
-    setNewDescripton(event.target.value);
-    event.target.setCustomValidity('');
+    setNewDescripton(event.target.value)
+    event.target.setCustomValidity('')
   }
-  
+
   return (
     <div>
       <Header />
