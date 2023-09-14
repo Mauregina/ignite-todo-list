@@ -16,13 +16,13 @@ export function App() {
   function addNewTask() {
     const newId = Math.max(...tasks.map((i) => i.id), 0) + 1
 
-    const newTask = {
+    const newTask: Task = {
       id: newId,
       description: newDescripton,
       done: false,
     }
 
-    setTasks([...tasks, newTask])
+    setTasks((state) => [...state, newTask])
     setNewDescripton('')
   }
 
